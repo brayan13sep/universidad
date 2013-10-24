@@ -26,7 +26,7 @@ class Manejador {
       $this->direccion=$direccion;
       $this->correo=$correo;
       $this->sede=$sede;
-      $this->query = "INSERT INTO Alumnos (carnet, nombre, direccion, correo, sede) VALUES ('".$this->carnet."', '".$this->nombre."', '".$this->direccion."', '".$this->correo."', ".$this->sede.");";
+      $this->query = "INSERT INTO Alumnos (carnet, nombre, direccion, correo, sede) VALUES ('".$this->carnet."', '".$this->nombre."', '".$this->direccion."', '".$this->correo."', '".$this->sede."');";
 
       $this->resultadoss = mysql_query($this->query);
       if ($this->resultadoss) {
@@ -42,7 +42,7 @@ class Manejador {
       $this->nombre=$nombre;
       $this->correo=$correo;
       $this->telefono=$telefono;
-      $this->query = "INSERT INTO Catedraticos (idcatedratico, nombre, correo, telefono) VALUES ('".$this->idcatedratico."', '".$this->nombre."', '".$this->correo."', ".$this->telefono.");";
+      $this->query = "INSERT INTO Catedraticos (idcatedratico, nombre, correo, telefono) VALUES ('".$this->idcatedratico."', '".$this->nombre."', '".$this->correo."', '".$this->telefono."');";
 
       $this->resultadoss = mysql_query($this->query);
       if ($this->resultadoss) {
@@ -118,6 +118,7 @@ class Manejador {
       $this->con->conectar();
       $this->query = "SELECT * FROM Alumnos;";
       $this->resultadoss = mysql_query($this->query);
+      return get_object_vars( $this->resultadoss);
     }
 
     function verAlumnosporCarnet($carnet){
@@ -141,4 +142,5 @@ class Manejador {
       $this->query = "SELECT a.cod_curso, b.curso, a.semestre, c.Nota FROM Pensum a, Cursos b, Notas c WHERE c.carnet = ".$this->carnet." and a.cod_curso = b.idcurso;";
       $this->resultado=mysql_query($this->query);
     }
+  }
 ?>
