@@ -16,7 +16,11 @@ $Sede=$_POST['Sede'];
 $Manejador= new Manejador();
 
 $Manejador->crearAlumno($Carne, $Nombre, $Direccion, $Correo, $Sede);
-
+if ($resultado) {
+echo "Catedratico Registrado Exitosamente";
+}else{
+	echo "Lo sentimos no se pudo Registrar ";
+}
 
  ?>
 	</form>
